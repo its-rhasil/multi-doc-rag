@@ -11,7 +11,7 @@ def chunk(pages: list, chunk_size: int = 1000, chunk_overlap: int = 200):
     for page in pages:
         document = Document(
             page_content=page["text"],
-            metadata = page["metadata"]
+            metadata = page["metadata"],
         )
         documents.append(document)
 

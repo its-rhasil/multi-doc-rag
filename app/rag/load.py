@@ -1,8 +1,9 @@
 import fitz
 from pathlib import Path
+from app.rag.document_hasher import DocumentHasher
 
 def load(pdf_path: str) -> list[dict]:
-    
+    document_hash = DocumentHasher.hash_document(pdf_path)
     pdf_path = Path(pdf_path)
 
     if not pdf_path.exists():
@@ -16,7 +17,8 @@ def load(pdf_path: str) -> list[dict]:
                 "text": text,
                 "metadata": {
                     "source": pdf_path.name,
-                    "page_number": page_num + 1
+                    "page_number": page_num + 1,
+                    "document_hash": document_hash
                 }
             })
     return pages
