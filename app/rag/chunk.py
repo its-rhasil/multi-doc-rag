@@ -13,7 +13,8 @@ def chunk(pages: list, chunk_size: int = 1000, chunk_overlap: int = 200):
             page_content=page["text"],
             metadata = page["metadata"]
         )
-        documents.append(chunk)
-    chunks = textsplitter(documents)
+        documents.append(document)
+
+    chunks = textsplitter.split_documents(documents)
 
     return chunks
